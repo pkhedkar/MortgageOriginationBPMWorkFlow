@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.myorg.losworkflow.workflow.MortgageOrigination.DeclarationsNDisclosures" name="Declarations &amp; Disclosures" tns:packageName="com.myorg.losworkflow.workflow" tns:version="1" >
+
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-58" name="Start"  isInterrupting="false">
+    </startEvent>
+    <endEvent id="_jbpm-unique-62" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <parallelGateway id="_jbpm-unique-63" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <parallelGateway id="_jbpm-unique-64" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-80" name="Military Disclosure" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-81" name="Home Mortgage Disclosure Act" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <subProcess id="_jbpm-unique-82" name="Declarations" >
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-83" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-84" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-85" name="Declarations Page 1" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-86" name="Declarations Page 2" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-87" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-88" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-83-_jbpm-unique-84" sourceRef="_jbpm-unique-83" targetRef="_jbpm-unique-84" />
+    <sequenceFlow id="_jbpm-unique-84-_jbpm-unique-85" sourceRef="_jbpm-unique-84" targetRef="_jbpm-unique-85" />
+    <sequenceFlow id="_jbpm-unique-84-_jbpm-unique-86" sourceRef="_jbpm-unique-84" targetRef="_jbpm-unique-86" />
+    <sequenceFlow id="_jbpm-unique-85-_jbpm-unique-87" sourceRef="_jbpm-unique-85" targetRef="_jbpm-unique-87" />
+    <sequenceFlow id="_jbpm-unique-86-_jbpm-unique-87" sourceRef="_jbpm-unique-86" targetRef="_jbpm-unique-87" />
+    <sequenceFlow id="_jbpm-unique-87-_jbpm-unique-88" sourceRef="_jbpm-unique-87" targetRef="_jbpm-unique-88" />
+    </subProcess>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-64-_jbpm-unique-62" sourceRef="_jbpm-unique-64" targetRef="_jbpm-unique-62" />
+    <sequenceFlow id="_jbpm-unique-58-_jbpm-unique-63" sourceRef="_jbpm-unique-58" targetRef="_jbpm-unique-63" />
+    <sequenceFlow id="_jbpm-unique-80-_jbpm-unique-64" sourceRef="_jbpm-unique-80" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-81-_jbpm-unique-64" sourceRef="_jbpm-unique-81" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-82-_jbpm-unique-64" sourceRef="_jbpm-unique-82" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-80" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-80" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-81" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-81" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-82" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-82" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.myorg.losworkflow.workflow.MortgageOrigination.DeclarationsNDisclosures" >
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-58" >
+        <dc:Bounds x="16" y="396" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-62" >
+        <dc:Bounds x="810" y="396" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-63" >
+        <dc:Bounds x="96" y="396" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-64" >
+        <dc:Bounds x="729" y="396" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-80" >
+        <dc:Bounds x="326" y="242" width="196" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-81" >
+        <dc:Bounds x="326" y="395" width="196" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-82" >
+        <dc:Bounds x="177" y="518" width="520" height="248" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-83" >
+        <dc:Bounds x="187" y="632" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-84" >
+        <dc:Bounds x="263" y="634" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-85" >
+        <dc:Bounds x="352" y="562" width="168" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-86" >
+        <dc:Bounds x="350" y="655" width="168" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-87" >
+        <dc:Bounds x="552" y="621" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-88" >
+        <dc:Bounds x="637" y="620" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-83-_jbpm-unique-84" >
+        <di:waypoint x="34" y="138" />
+        <di:waypoint x="110" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-84-_jbpm-unique-85" >
+        <di:waypoint x="110" y="140" />
+        <di:waypoint x="259" y="68" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-84-_jbpm-unique-86" >
+        <di:waypoint x="110" y="140" />
+        <di:waypoint x="257" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-85-_jbpm-unique-87" >
+        <di:waypoint x="259" y="68" />
+        <di:waypoint x="399" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-86-_jbpm-unique-87" >
+        <di:waypoint x="257" y="161" />
+        <di:waypoint x="399" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-87-_jbpm-unique-88" >
+        <di:waypoint x="399" y="127" />
+        <di:waypoint x="484" y="126" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-64-_jbpm-unique-62" >
+        <di:waypoint x="753" y="420" />
+        <di:waypoint x="834" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-58-_jbpm-unique-63" >
+        <di:waypoint x="40" y="420" />
+        <di:waypoint x="120" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-80-_jbpm-unique-64" >
+        <di:waypoint x="424" y="270" />
+        <di:waypoint x="753" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-81-_jbpm-unique-64" >
+        <di:waypoint x="424" y="423" />
+        <di:waypoint x="753" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-82-_jbpm-unique-64" >
+        <di:waypoint x="437" y="642" />
+        <di:waypoint x="753" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-80" >
+        <di:waypoint x="120" y="420" />
+        <di:waypoint x="424" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-81" >
+        <di:waypoint x="120" y="420" />
+        <di:waypoint x="424" y="423" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-82" >
+        <di:waypoint x="120" y="420" />
+        <di:waypoint x="437" y="642" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

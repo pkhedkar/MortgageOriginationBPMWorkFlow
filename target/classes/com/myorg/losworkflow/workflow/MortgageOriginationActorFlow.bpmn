@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.myorg.losworkflow.workflow.MortgageOriginationProcess" name="Mortgage Origination Actors" tns:packageName="com.myorg.losworkflow.workflow" tns:version="1" >
+
+    <!-- nodes -->
+    <startEvent id="StartEvent_1" name="Start"  isInterrupting="true">
+    </startEvent>
+    <scriptTask id="ScriptTask_2" name="Start" scriptFormat="http://www.java.com/java" >
+      <script>long id = kcontext.getProcessInstance().getId();
+String name = (String)kcontext.getVariable("recipient");
+String log = "new application " + id + " started by " + name;
+System.out.println(log);</script>
+    </scriptTask>
+    <userTask id="UserTask_2" name="ConfirmIntent " >
+      <extensionElements>
+        <tns:onEntry-script>
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>long id = kcontext.getProcessInstance().getId();
+String log = "mary confirmed intent for application " + id;
+System.out.println(log);</tns:script>
+        </tns:onExit-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="UserTask_2_TaskNameInput" name="TaskName" />
+        <dataInput id="UserTask_2_NodeNameInput" name="NodeName" />
+        <dataInput id="UserTask_2_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>UserTask_2_TaskNameInput</dataInputRefs>
+          <dataInputRefs>UserTask_2_NodeNameInput</dataInputRefs>
+          <dataInputRefs>UserTask_2_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>UserTask_2_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task2</from>
+          <to xsi:type="tFormalExpression">UserTask_2_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>UserTask_2_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">ConfirmIntent </from>
+          <to xsi:type="tFormalExpression">UserTask_2_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>UserTask_2_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Agent</from>
+          <to xsi:type="tFormalExpression">UserTask_2_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>mary</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-3" name="Disburse Funds" >
+      <extensionElements>
+        <tns:onEntry-script>
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>long id = kcontext.getProcessInstance().getId();
+String log = "krisv disbrsed funds for application " + id;
+System.out.println(log);</tns:script>
+        </tns:onExit-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-3_LocaleInput" name="Locale" />
+        <dataInput id="_jbpm-unique-3_CommentInput" name="Comment" />
+        <dataInput id="_jbpm-unique-3_CreatedByInput" name="CreatedBy" />
+        <dataInput id="_jbpm-unique-3_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-3_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-3_PriorityInput" name="Priority" />
+        <dataInput id="_jbpm-unique-3_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-3_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-3_LocaleInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_CommentInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_CreatedByInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_PriorityInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_LocaleInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">en-UK</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_LocaleInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_CreatedByInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_CreatedByInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task6</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Disburse Funds</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_PriorityInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_PriorityInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">ClosingAgent</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>krisv</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <scriptTask id="_jbpm-unique-4" name="Script" scriptFormat="http://www.java.com/java" >
+      <script>long id = kcontext.getProcessInstance().getId();
+String log = "process " + id + " finished";
+System.out.println(log);</script>
+    </scriptTask>
+    <endEvent id="_jbpm-unique-5" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <callActivity id="_jbpm-unique-161" name="Apply" calledElement="com.myorg.losworkflow.workflow.MortgageOriginationApplyProcess" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </callActivity>
+    <callActivity id="_jbpm-unique-162" name="Collect Info" calledElement="com.myorg.losworkflow.workflow.MortgageOrigination.CollectInfo" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </callActivity>
+    <callActivity id="_jbpm-unique-170" name="Wait for approval" calledElement="com.myorg.losworkflow.workflow.MortgageOrigination.WaitForApproval" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </callActivity>
+    <callActivity id="_jbpm-unique-171" name="Targeting to close" calledElement="com.myorg.losworkflow.workflow.MortgageOrigination.TargetingToClose" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </callActivity>
+
+    <!-- connections -->
+    <sequenceFlow id="StartEvent_1-ScriptTask_2" sourceRef="StartEvent_1" targetRef="ScriptTask_2" />
+    <sequenceFlow id="_jbpm-unique-161-UserTask_2" sourceRef="_jbpm-unique-161" targetRef="UserTask_2" />
+    <sequenceFlow id="_jbpm-unique-171-_jbpm-unique-3" sourceRef="_jbpm-unique-171" targetRef="_jbpm-unique-3" />
+    <sequenceFlow id="_jbpm-unique-3-_jbpm-unique-4" sourceRef="_jbpm-unique-3" targetRef="_jbpm-unique-4" />
+    <sequenceFlow id="_jbpm-unique-4-_jbpm-unique-5" sourceRef="_jbpm-unique-4" targetRef="_jbpm-unique-5" />
+    <sequenceFlow id="ScriptTask_2-_jbpm-unique-161" sourceRef="ScriptTask_2" targetRef="_jbpm-unique-161" />
+    <sequenceFlow id="UserTask_2-_jbpm-unique-162" sourceRef="UserTask_2" targetRef="_jbpm-unique-162" />
+    <sequenceFlow id="_jbpm-unique-162-_jbpm-unique-170" sourceRef="_jbpm-unique-162" targetRef="_jbpm-unique-170" />
+    <sequenceFlow id="_jbpm-unique-170-_jbpm-unique-171" sourceRef="_jbpm-unique-170" targetRef="_jbpm-unique-171" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.myorg.losworkflow.workflow.MortgageOriginationProcess" >
+      <bpmndi:BPMNShape bpmnElement="StartEvent_1" >
+        <dc:Bounds x="16" y="269" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ScriptTask_2" >
+        <dc:Bounds x="96" y="268" width="95" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="UserTask_2" >
+        <dc:Bounds x="413" y="268" width="110" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-3" >
+        <dc:Bounds x="1219" y="269" width="125" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-4" >
+        <dc:Bounds x="1405" y="269" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-5" >
+        <dc:Bounds x="1517" y="269" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-161" >
+        <dc:Bounds x="241" y="267" width="110" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-162" >
+        <dc:Bounds x="590" y="269" width="110" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-170" >
+        <dc:Bounds x="761" y="271" width="166" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-171" >
+        <dc:Bounds x="985" y="269" width="166" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="StartEvent_1-ScriptTask_2" >
+        <di:waypoint x="40" y="293" />
+        <di:waypoint x="143" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-161-UserTask_2" >
+        <di:waypoint x="296" y="291" />
+        <di:waypoint x="468" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-171-_jbpm-unique-3" >
+        <di:waypoint x="1068" y="293" />
+        <di:waypoint x="1281" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-3-_jbpm-unique-4" >
+        <di:waypoint x="1281" y="293" />
+        <di:waypoint x="1445" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-4-_jbpm-unique-5" >
+        <di:waypoint x="1445" y="293" />
+        <di:waypoint x="1541" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ScriptTask_2-_jbpm-unique-161" >
+        <di:waypoint x="143" y="293" />
+        <di:waypoint x="296" y="291" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="UserTask_2-_jbpm-unique-162" >
+        <di:waypoint x="468" y="293" />
+        <di:waypoint x="645" y="293" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-162-_jbpm-unique-170" >
+        <di:waypoint x="645" y="293" />
+        <di:waypoint x="844" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-170-_jbpm-unique-171" >
+        <di:waypoint x="844" y="295" />
+        <di:waypoint x="1068" y="293" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

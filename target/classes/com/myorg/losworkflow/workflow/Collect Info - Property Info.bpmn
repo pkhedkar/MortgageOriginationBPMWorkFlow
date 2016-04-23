@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.myorg.losworkflow.workflow.MortgageOrigination.PropertyInfo" name="Property Info" tns:packageName="com.myorg.losworkflow.workflow" tns:version="1" >
+
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-58" name="Start"  isInterrupting="false">
+    </startEvent>
+    <userTask id="_jbpm-unique-59" name="Property Address" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-60" name="Property Type" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-61" name="Property Contacts" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <endEvent id="_jbpm-unique-62" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <parallelGateway id="_jbpm-unique-63" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <parallelGateway id="_jbpm-unique-64" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-59" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-59" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-60" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-60" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-61" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-61" />
+    <sequenceFlow id="_jbpm-unique-64-_jbpm-unique-62" sourceRef="_jbpm-unique-64" targetRef="_jbpm-unique-62" />
+    <sequenceFlow id="_jbpm-unique-58-_jbpm-unique-63" sourceRef="_jbpm-unique-58" targetRef="_jbpm-unique-63" />
+    <sequenceFlow id="_jbpm-unique-61-_jbpm-unique-64" sourceRef="_jbpm-unique-61" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-60-_jbpm-unique-64" sourceRef="_jbpm-unique-60" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-59-_jbpm-unique-64" sourceRef="_jbpm-unique-59" targetRef="_jbpm-unique-64" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.myorg.losworkflow.workflow.MortgageOrigination.PropertyInfo" >
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-58" >
+        <dc:Bounds x="16" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-59" >
+        <dc:Bounds x="177" y="16" width="168" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-60" >
+        <dc:Bounds x="177" y="96" width="168" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-61" >
+        <dc:Bounds x="177" y="176" width="168" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-62" >
+        <dc:Bounds x="458" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-63" >
+        <dc:Bounds x="96" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-64" >
+        <dc:Bounds x="377" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-59" >
+        <di:waypoint x="120" y="120" />
+        <di:waypoint x="261" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-60" >
+        <di:waypoint x="120" y="120" />
+        <di:waypoint x="261" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-61" >
+        <di:waypoint x="120" y="120" />
+        <di:waypoint x="261" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-64-_jbpm-unique-62" >
+        <di:waypoint x="401" y="120" />
+        <di:waypoint x="482" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-58-_jbpm-unique-63" >
+        <di:waypoint x="40" y="120" />
+        <di:waypoint x="120" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-61-_jbpm-unique-64" >
+        <di:waypoint x="261" y="200" />
+        <di:waypoint x="401" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-60-_jbpm-unique-64" >
+        <di:waypoint x="261" y="120" />
+        <di:waypoint x="401" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-59-_jbpm-unique-64" >
+        <di:waypoint x="261" y="40" />
+        <di:waypoint x="401" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

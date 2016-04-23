@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.myorg.losworkflow.workflow.MortgageOrigination.BorrowerInformation" name="Borrower Information" tns:packageName="com.myorg.losworkflow.workflow" tns:version="1" >
+
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-58" name="Start"  isInterrupting="false">
+    </startEvent>
+    <endEvent id="_jbpm-unique-62" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <parallelGateway id="_jbpm-unique-63" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <parallelGateway id="_jbpm-unique-64" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <subProcess id="_jbpm-unique-65" name="Basic Info" >
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-67" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-69" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-71" name="Basic Info" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-71_NodeNameInput" name="NodeName" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-71_NodeNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-71_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Loan Purpose</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-71_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+    <userTask id="_jbpm-unique-72" name="Marital Status" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-72_NodeNameInput" name="NodeName" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-72_NodeNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-72_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Refinance Info</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-72_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-75" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-77" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_jbpm-unique-172" name="Power of attorney" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-173" name="Other" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-67-_jbpm-unique-69" sourceRef="_jbpm-unique-67" targetRef="_jbpm-unique-69" />
+    <sequenceFlow id="_jbpm-unique-69-_jbpm-unique-71" sourceRef="_jbpm-unique-69" targetRef="_jbpm-unique-71" />
+    <sequenceFlow id="_jbpm-unique-69-_jbpm-unique-72" sourceRef="_jbpm-unique-69" targetRef="_jbpm-unique-72" />
+    <sequenceFlow id="_jbpm-unique-71-_jbpm-unique-75" sourceRef="_jbpm-unique-71" targetRef="_jbpm-unique-75" />
+    <sequenceFlow id="_jbpm-unique-72-_jbpm-unique-75" sourceRef="_jbpm-unique-72" targetRef="_jbpm-unique-75" />
+    <sequenceFlow id="_jbpm-unique-172-_jbpm-unique-75" sourceRef="_jbpm-unique-172" targetRef="_jbpm-unique-75" />
+    <sequenceFlow id="_jbpm-unique-173-_jbpm-unique-75" sourceRef="_jbpm-unique-173" targetRef="_jbpm-unique-75" />
+    <sequenceFlow id="_jbpm-unique-75-_jbpm-unique-77" sourceRef="_jbpm-unique-75" targetRef="_jbpm-unique-77" />
+    <sequenceFlow id="_jbpm-unique-69-_jbpm-unique-172" sourceRef="_jbpm-unique-69" targetRef="_jbpm-unique-172" />
+    <sequenceFlow id="_jbpm-unique-69-_jbpm-unique-173" sourceRef="_jbpm-unique-69" targetRef="_jbpm-unique-173" />
+    </subProcess>
+    <subProcess id="_jbpm-unique-66" name="Address" >
+    <!-- nodes -->
+    <userTask id="_jbpm-unique-74" name="Mailing Address" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-74_NodeNameInput" name="NodeName" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-74_NodeNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-74_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Loan Title</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-74_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-76" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-78" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <startEvent id="_jbpm-unique-68" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-70" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-73" name="Address" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-73_NodeNameInput" name="NodeName" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-73_NodeNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-73_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Loan Terms</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-73_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-70-_jbpm-unique-74" sourceRef="_jbpm-unique-70" targetRef="_jbpm-unique-74" />
+    <sequenceFlow id="_jbpm-unique-74-_jbpm-unique-76" sourceRef="_jbpm-unique-74" targetRef="_jbpm-unique-76" />
+    <sequenceFlow id="_jbpm-unique-73-_jbpm-unique-76" sourceRef="_jbpm-unique-73" targetRef="_jbpm-unique-76" />
+    <sequenceFlow id="_jbpm-unique-76-_jbpm-unique-78" sourceRef="_jbpm-unique-76" targetRef="_jbpm-unique-78" />
+    <sequenceFlow id="_jbpm-unique-68-_jbpm-unique-70" sourceRef="_jbpm-unique-68" targetRef="_jbpm-unique-70" />
+    <sequenceFlow id="_jbpm-unique-70-_jbpm-unique-73" sourceRef="_jbpm-unique-70" targetRef="_jbpm-unique-73" />
+    </subProcess>
+    <subProcess id="_jbpm-unique-174" name="Employment Info" >
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-175" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-176" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-177" name="Employment Info" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-178" name="Work Address" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-179" name="Work documentation" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-180" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-181" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-175-_jbpm-unique-176" sourceRef="_jbpm-unique-175" targetRef="_jbpm-unique-176" />
+    <sequenceFlow id="_jbpm-unique-176-_jbpm-unique-177" sourceRef="_jbpm-unique-176" targetRef="_jbpm-unique-177" />
+    <sequenceFlow id="_jbpm-unique-176-_jbpm-unique-178" sourceRef="_jbpm-unique-176" targetRef="_jbpm-unique-178" />
+    <sequenceFlow id="_jbpm-unique-176-_jbpm-unique-179" sourceRef="_jbpm-unique-176" targetRef="_jbpm-unique-179" />
+    <sequenceFlow id="_jbpm-unique-177-_jbpm-unique-180" sourceRef="_jbpm-unique-177" targetRef="_jbpm-unique-180" />
+    <sequenceFlow id="_jbpm-unique-178-_jbpm-unique-180" sourceRef="_jbpm-unique-178" targetRef="_jbpm-unique-180" />
+    <sequenceFlow id="_jbpm-unique-179-_jbpm-unique-180" sourceRef="_jbpm-unique-179" targetRef="_jbpm-unique-180" />
+    <sequenceFlow id="_jbpm-unique-180-_jbpm-unique-181" sourceRef="_jbpm-unique-180" targetRef="_jbpm-unique-181" />
+    </subProcess>
+    <subProcess id="_jbpm-unique-182" name="Financial Info" >
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-183" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-184" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-185" name="Financial Info 1" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-186" name="Financial Info 2" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-187" name="Guarantee &amp; Tax Liens" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-188" name="Accountant" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-189" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-190" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-183-_jbpm-unique-184" sourceRef="_jbpm-unique-183" targetRef="_jbpm-unique-184" />
+    <sequenceFlow id="_jbpm-unique-184-_jbpm-unique-185" sourceRef="_jbpm-unique-184" targetRef="_jbpm-unique-185" />
+    <sequenceFlow id="_jbpm-unique-184-_jbpm-unique-186" sourceRef="_jbpm-unique-184" targetRef="_jbpm-unique-186" />
+    <sequenceFlow id="_jbpm-unique-184-_jbpm-unique-187" sourceRef="_jbpm-unique-184" targetRef="_jbpm-unique-187" />
+    <sequenceFlow id="_jbpm-unique-184-_jbpm-unique-188" sourceRef="_jbpm-unique-184" targetRef="_jbpm-unique-188" />
+    <sequenceFlow id="_jbpm-unique-185-_jbpm-unique-189" sourceRef="_jbpm-unique-185" targetRef="_jbpm-unique-189" />
+    <sequenceFlow id="_jbpm-unique-186-_jbpm-unique-189" sourceRef="_jbpm-unique-186" targetRef="_jbpm-unique-189" />
+    <sequenceFlow id="_jbpm-unique-187-_jbpm-unique-189" sourceRef="_jbpm-unique-187" targetRef="_jbpm-unique-189" />
+    <sequenceFlow id="_jbpm-unique-188-_jbpm-unique-189" sourceRef="_jbpm-unique-188" targetRef="_jbpm-unique-189" />
+    <sequenceFlow id="_jbpm-unique-189-_jbpm-unique-190" sourceRef="_jbpm-unique-189" targetRef="_jbpm-unique-190" />
+    </subProcess>
+    <subProcess id="_jbpm-unique-191" name="Contact Info" >
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-192" name="Start"  isInterrupting="false">
+    </startEvent>
+    <parallelGateway id="_jbpm-unique-193" name="Gateway" gatewayDirection="Diverging" >
+    </parallelGateway>
+    <userTask id="_jbpm-unique-194" name="Travel Plans" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-195" name="Key Contact" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-196" name="Gateway" gatewayDirection="Converging" >
+    </parallelGateway>
+    <endEvent id="_jbpm-unique-197" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-192-_jbpm-unique-193" sourceRef="_jbpm-unique-192" targetRef="_jbpm-unique-193" />
+    <sequenceFlow id="_jbpm-unique-193-_jbpm-unique-194" sourceRef="_jbpm-unique-193" targetRef="_jbpm-unique-194" />
+    <sequenceFlow id="_jbpm-unique-193-_jbpm-unique-195" sourceRef="_jbpm-unique-193" targetRef="_jbpm-unique-195" />
+    <sequenceFlow id="_jbpm-unique-194-_jbpm-unique-196" sourceRef="_jbpm-unique-194" targetRef="_jbpm-unique-196" />
+    <sequenceFlow id="_jbpm-unique-195-_jbpm-unique-196" sourceRef="_jbpm-unique-195" targetRef="_jbpm-unique-196" />
+    <sequenceFlow id="_jbpm-unique-196-_jbpm-unique-197" sourceRef="_jbpm-unique-196" targetRef="_jbpm-unique-197" />
+    </subProcess>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-64-_jbpm-unique-62" sourceRef="_jbpm-unique-64" targetRef="_jbpm-unique-62" />
+    <sequenceFlow id="_jbpm-unique-58-_jbpm-unique-63" sourceRef="_jbpm-unique-58" targetRef="_jbpm-unique-63" />
+    <sequenceFlow id="_jbpm-unique-65-_jbpm-unique-64" sourceRef="_jbpm-unique-65" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-66-_jbpm-unique-64" sourceRef="_jbpm-unique-66" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-174-_jbpm-unique-64" sourceRef="_jbpm-unique-174" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-182-_jbpm-unique-64" sourceRef="_jbpm-unique-182" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-191-_jbpm-unique-64" sourceRef="_jbpm-unique-191" targetRef="_jbpm-unique-64" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-65" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-65" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-66" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-66" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-174" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-174" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-182" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-182" />
+    <sequenceFlow id="_jbpm-unique-63-_jbpm-unique-191" sourceRef="_jbpm-unique-63" targetRef="_jbpm-unique-191" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.myorg.losworkflow.workflow.MortgageOrigination.BorrowerInformation" >
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-58" >
+        <dc:Bounds x="22" y="661" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-62" >
+        <dc:Bounds x="1284" y="652" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-63" >
+        <dc:Bounds x="102" y="661" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-64" >
+        <dc:Bounds x="1203" y="652" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-65" >
+        <dc:Bounds x="338" y="27" width="626" height="301" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-67" >
+        <dc:Bounds x="378" y="169" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-69" >
+        <dc:Bounds x="445" y="170" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-71" >
+        <dc:Bounds x="602" y="56" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-72" >
+        <dc:Bounds x="606" y="131" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-75" >
+        <dc:Bounds x="816" y="170" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-77" >
+        <dc:Bounds x="887" y="168" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-172" >
+        <dc:Bounds x="608" y="202" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-173" >
+        <dc:Bounds x="610" y="271" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-66" >
+        <dc:Bounds x="339" y="354" width="626" height="171" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-74" >
+        <dc:Bounds x="606" y="462" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-76" >
+        <dc:Bounds x="810" y="429" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-78" >
+        <dc:Bounds x="882" y="424" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-68" >
+        <dc:Bounds x="380" y="420" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-70" >
+        <dc:Bounds x="447" y="423" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-73" >
+        <dc:Bounds x="604" y="389" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-174" >
+        <dc:Bounds x="339" y="558" width="632" height="240" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-175" >
+        <dc:Bounds x="391" y="669" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-176" >
+        <dc:Bounds x="486" y="666" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-177" >
+        <dc:Bounds x="600" y="590" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-178" >
+        <dc:Bounds x="601" y="661" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-179" >
+        <dc:Bounds x="605" y="728" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-180" >
+        <dc:Bounds x="819" y="674" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-181" >
+        <dc:Bounds x="893" y="672" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-182" >
+        <dc:Bounds x="340" y="815" width="632" height="273" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-183" >
+        <dc:Bounds x="355" y="935" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-184" >
+        <dc:Bounds x="446" y="937" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-185" >
+        <dc:Bounds x="602" y="836" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-186" >
+        <dc:Bounds x="602" y="895" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-187" >
+        <dc:Bounds x="602" y="954" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-188" >
+        <dc:Bounds x="603" y="1022" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-189" >
+        <dc:Bounds x="798" y="937" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-190" >
+        <dc:Bounds x="902" y="939" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-191" >
+        <dc:Bounds x="340" y="1111" width="633" height="208" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-192" >
+        <dc:Bounds x="360" y="1201" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-193" >
+        <dc:Bounds x="449" y="1201" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-194" >
+        <dc:Bounds x="601" y="1144" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-195" >
+        <dc:Bounds x="602" y="1234" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-196" >
+        <dc:Bounds x="767" y="1192" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-197" >
+        <dc:Bounds x="880" y="1189" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-67-_jbpm-unique-69" >
+        <di:waypoint x="64" y="166" />
+        <di:waypoint x="131" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-69-_jbpm-unique-71" >
+        <di:waypoint x="131" y="167" />
+        <di:waypoint x="314" y="53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-69-_jbpm-unique-72" >
+        <di:waypoint x="131" y="167" />
+        <di:waypoint x="318" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-71-_jbpm-unique-75" >
+        <di:waypoint x="314" y="53" />
+        <di:waypoint x="502" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-72-_jbpm-unique-75" >
+        <di:waypoint x="318" y="128" />
+        <di:waypoint x="502" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-172-_jbpm-unique-75" >
+        <di:waypoint x="320" y="199" />
+        <di:waypoint x="502" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-173-_jbpm-unique-75" >
+        <di:waypoint x="322" y="268" />
+        <di:waypoint x="502" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-75-_jbpm-unique-77" >
+        <di:waypoint x="502" y="167" />
+        <di:waypoint x="573" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-69-_jbpm-unique-172" >
+        <di:waypoint x="131" y="167" />
+        <di:waypoint x="320" y="199" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-69-_jbpm-unique-173" >
+        <di:waypoint x="131" y="167" />
+        <di:waypoint x="322" y="268" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-70-_jbpm-unique-74" >
+        <di:waypoint x="132" y="93" />
+        <di:waypoint x="317" y="132" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-74-_jbpm-unique-76" >
+        <di:waypoint x="317" y="132" />
+        <di:waypoint x="495" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-73-_jbpm-unique-76" >
+        <di:waypoint x="315" y="59" />
+        <di:waypoint x="495" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-76-_jbpm-unique-78" >
+        <di:waypoint x="495" y="99" />
+        <di:waypoint x="567" y="94" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-68-_jbpm-unique-70" >
+        <di:waypoint x="65" y="90" />
+        <di:waypoint x="132" y="93" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-70-_jbpm-unique-73" >
+        <di:waypoint x="132" y="93" />
+        <di:waypoint x="315" y="59" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-175-_jbpm-unique-176" >
+        <di:waypoint x="76" y="135" />
+        <di:waypoint x="171" y="132" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-176-_jbpm-unique-177" >
+        <di:waypoint x="171" y="132" />
+        <di:waypoint x="311" y="56" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-176-_jbpm-unique-178" >
+        <di:waypoint x="171" y="132" />
+        <di:waypoint x="312" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-176-_jbpm-unique-179" >
+        <di:waypoint x="171" y="132" />
+        <di:waypoint x="316" y="194" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-177-_jbpm-unique-180" >
+        <di:waypoint x="311" y="56" />
+        <di:waypoint x="504" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-178-_jbpm-unique-180" >
+        <di:waypoint x="312" y="127" />
+        <di:waypoint x="504" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-179-_jbpm-unique-180" >
+        <di:waypoint x="316" y="194" />
+        <di:waypoint x="504" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-180-_jbpm-unique-181" >
+        <di:waypoint x="504" y="140" />
+        <di:waypoint x="578" y="138" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-183-_jbpm-unique-184" >
+        <di:waypoint x="39" y="144" />
+        <di:waypoint x="130" y="146" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-184-_jbpm-unique-185" >
+        <di:waypoint x="130" y="146" />
+        <di:waypoint x="312" y="45" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-184-_jbpm-unique-186" >
+        <di:waypoint x="130" y="146" />
+        <di:waypoint x="312" y="104" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-184-_jbpm-unique-187" >
+        <di:waypoint x="130" y="146" />
+        <di:waypoint x="312" y="163" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-184-_jbpm-unique-188" >
+        <di:waypoint x="130" y="146" />
+        <di:waypoint x="313" y="231" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-185-_jbpm-unique-189" >
+        <di:waypoint x="312" y="45" />
+        <di:waypoint x="482" y="146" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-186-_jbpm-unique-189" >
+        <di:waypoint x="312" y="104" />
+        <di:waypoint x="482" y="146" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-187-_jbpm-unique-189" >
+        <di:waypoint x="312" y="163" />
+        <di:waypoint x="482" y="146" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-188-_jbpm-unique-189" >
+        <di:waypoint x="313" y="231" />
+        <di:waypoint x="482" y="146" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-189-_jbpm-unique-190" >
+        <di:waypoint x="482" y="146" />
+        <di:waypoint x="586" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-192-_jbpm-unique-193" >
+        <di:waypoint x="44" y="114" />
+        <di:waypoint x="133" y="114" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-193-_jbpm-unique-194" >
+        <di:waypoint x="133" y="114" />
+        <di:waypoint x="311" y="57" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-193-_jbpm-unique-195" >
+        <di:waypoint x="133" y="114" />
+        <di:waypoint x="312" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-194-_jbpm-unique-196" >
+        <di:waypoint x="311" y="57" />
+        <di:waypoint x="451" y="105" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-195-_jbpm-unique-196" >
+        <di:waypoint x="312" y="147" />
+        <di:waypoint x="451" y="105" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-196-_jbpm-unique-197" >
+        <di:waypoint x="451" y="105" />
+        <di:waypoint x="564" y="102" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-64-_jbpm-unique-62" >
+        <di:waypoint x="1227" y="676" />
+        <di:waypoint x="1308" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-58-_jbpm-unique-63" >
+        <di:waypoint x="46" y="685" />
+        <di:waypoint x="126" y="685" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-65-_jbpm-unique-64" >
+        <di:waypoint x="651" y="177" />
+        <di:waypoint x="1196" y="238" />
+        <di:waypoint x="1227" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-66-_jbpm-unique-64" >
+        <di:waypoint x="652" y="439" />
+        <di:waypoint x="1111" y="458" />
+        <di:waypoint x="1227" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-174-_jbpm-unique-64" >
+        <di:waypoint x="655" y="678" />
+        <di:waypoint x="1227" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-182-_jbpm-unique-64" >
+        <di:waypoint x="656" y="951" />
+        <di:waypoint x="1096" y="925" />
+        <di:waypoint x="1227" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-191-_jbpm-unique-64" >
+        <di:waypoint x="656" y="1215" />
+        <di:waypoint x="1231" y="1209" />
+        <di:waypoint x="1227" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-65" >
+        <di:waypoint x="126" y="685" />
+        <di:waypoint x="182" y="297" />
+        <di:waypoint x="651" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-66" >
+        <di:waypoint x="126" y="685" />
+        <di:waypoint x="211" y="473" />
+        <di:waypoint x="652" y="439" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-174" >
+        <di:waypoint x="126" y="685" />
+        <di:waypoint x="655" y="678" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-182" >
+        <di:waypoint x="126" y="685" />
+        <di:waypoint x="230" y="900" />
+        <di:waypoint x="656" y="951" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-63-_jbpm-unique-191" >
+        <di:waypoint x="126" y="685" />
+        <di:waypoint x="95" y="1193" />
+        <di:waypoint x="656" y="1215" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

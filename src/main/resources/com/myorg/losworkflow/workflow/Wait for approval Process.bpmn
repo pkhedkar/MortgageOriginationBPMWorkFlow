@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.myorg.losworkflow.workflow.MortgageOrigination.WaitForApproval" name="Wait for approval" tns:packageName="com.myorg.losworkflow.workflow" tns:version="1" >
+
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-58" name="Start"  isInterrupting="false">
+    </startEvent>
+    <endEvent id="_jbpm-unique-62" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_jbpm-unique-163" name="We're doing financial analysis" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-164" name="Approved" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-164-_jbpm-unique-62" sourceRef="_jbpm-unique-164" targetRef="_jbpm-unique-62" />
+    <sequenceFlow id="_jbpm-unique-58-_jbpm-unique-163" sourceRef="_jbpm-unique-58" targetRef="_jbpm-unique-163" />
+    <sequenceFlow id="_jbpm-unique-163-_jbpm-unique-164" sourceRef="_jbpm-unique-163" targetRef="_jbpm-unique-164" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.myorg.losworkflow.workflow.MortgageOrigination.WaitForApproval" >
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-58" >
+        <dc:Bounds x="22" y="192" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-62" >
+        <dc:Bounds x="584" y="189" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-163" >
+        <dc:Bounds x="132" y="190" width="190" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-164" >
+        <dc:Bounds x="378" y="192" width="151" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-164-_jbpm-unique-62" >
+        <di:waypoint x="453" y="216" />
+        <di:waypoint x="608" y="213" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-58-_jbpm-unique-163" >
+        <di:waypoint x="46" y="216" />
+        <di:waypoint x="227" y="214" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-163-_jbpm-unique-164" >
+        <di:waypoint x="227" y="214" />
+        <di:waypoint x="453" y="216" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
